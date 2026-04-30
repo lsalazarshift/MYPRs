@@ -1,0 +1,185 @@
+// ============================================================
+// PR Filters — Estilos para chips de filtrado por estado
+// ============================================================
+// Importar en el componente o en main.scss:
+//   @use 'pr-filters';
+// ============================================================
+
+// --- Variables de color por estado ---
+// Adapta estos valores al tema de tu extensión de Azure DevOps.
+
+$filter-all-bg:              #f0f0f0;
+$filter-all-color:           #444444;
+$filter-all-active-bg:       #0078d4;
+$filter-all-active-color:    #ffffff;
+
+$filter-active-bg:           #e8f4fd;
+$filter-active-color:        #005a9e;
+$filter-active-active-bg:    #0078d4;
+$filter-active-active-color: #ffffff;
+
+$filter-waiting-bg:          #fff4ce;
+$filter-waiting-color:       #8a6914;
+$filter-waiting-active-bg:   #ff8c00;
+$filter-waiting-active-color:#ffffff;
+
+$filter-reviewed-bg:         #dff6dd;
+$filter-reviewed-color:      #107c10;
+$filter-reviewed-active-bg:  #107c10;
+$filter-reviewed-active-color:#ffffff;
+
+$filter-needs-review-bg:     #f0e6ff;
+$filter-needs-review-color:  #5c2d91;
+$filter-needs-review-active-bg:   #5c2d91;
+$filter-needs-review-active-color: #ffffff;
+
+$filter-ready-bg:            #d4edda;
+$filter-ready-color:         #155724;
+$filter-ready-active-bg:     #28a745;
+$filter-ready-active-color:  #ffffff;
+
+$filter-blocked-bg:          #fde7e9;
+$filter-blocked-color:       #a4262c;
+$filter-blocked-active-bg:   #d13438;
+$filter-blocked-active-color:#ffffff;
+
+$filter-draft-bg:            #f3f2f1;
+$filter-draft-color:         #605e5c;
+$filter-draft-active-bg:     #605e5c;
+$filter-draft-active-color:  #ffffff;
+
+// --- Contenedor de filtros ---
+
+.pr-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 0;
+  align-items: center;
+}
+
+// --- Base del chip ---
+
+.pr-filter {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 16px;
+  border: 1px solid transparent;
+  font-size: 13px;
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  user-select: none;
+  white-space: nowrap;
+
+  &:focus-visible {
+    outline: 2px solid #0078d4;
+    outline-offset: 2px;
+  }
+
+  &:hover:not(.is-active) {
+    filter: brightness(0.95);
+    border-color: rgba(0, 0, 0, 0.12);
+  }
+
+  // --- Variantes por estado ---
+
+  &--all {
+    background-color: $filter-all-bg;
+    color: $filter-all-color;
+    border-color: #d0d0d0;
+
+    &.is-active {
+      background-color: $filter-all-active-bg;
+      color: $filter-all-active-color;
+      border-color: $filter-all-active-bg;
+    }
+  }
+
+  &--active {
+    background-color: $filter-active-bg;
+    color: $filter-active-color;
+    border-color: lighten($filter-active-color, 35%);
+
+    &.is-active {
+      background-color: $filter-active-active-bg;
+      color: $filter-active-active-color;
+      border-color: $filter-active-active-bg;
+    }
+  }
+
+  &--waiting_for_author {
+    background-color: $filter-waiting-bg;
+    color: $filter-waiting-color;
+    border-color: lighten($filter-waiting-color, 30%);
+
+    &.is-active {
+      background-color: $filter-waiting-active-bg;
+      color: $filter-waiting-active-color;
+      border-color: $filter-waiting-active-bg;
+    }
+  }
+
+  &--reviewed {
+    background-color: $filter-reviewed-bg;
+    color: $filter-reviewed-color;
+    border-color: lighten($filter-reviewed-color, 35%);
+
+    &.is-active {
+      background-color: $filter-reviewed-active-bg;
+      color: $filter-reviewed-active-color;
+      border-color: $filter-reviewed-active-bg;
+    }
+  }
+
+  &--needs_review {
+    background-color: $filter-needs-review-bg;
+    color: $filter-needs-review-color;
+    border-color: lighten($filter-needs-review-color, 30%);
+
+    &.is-active {
+      background-color: $filter-needs-review-active-bg;
+      color: $filter-needs-review-active-color;
+      border-color: $filter-needs-review-active-bg;
+    }
+  }
+
+  &--ready_to_merge {
+    background-color: $filter-ready-bg;
+    color: $filter-ready-color;
+    border-color: lighten($filter-ready-color, 30%);
+
+    &.is-active {
+      background-color: $filter-ready-active-bg;
+      color: $filter-ready-active-color;
+      border-color: $filter-ready-active-bg;
+    }
+  }
+
+  &--blocked {
+    background-color: $filter-blocked-bg;
+    color: $filter-blocked-color;
+    border-color: lighten($filter-blocked-color, 25%);
+
+    &.is-active {
+      background-color: $filter-blocked-active-bg;
+      color: $filter-blocked-active-color;
+      border-color: $filter-blocked-active-bg;
+    }
+  }
+
+  &--draft {
+    background-color: $filter-draft-bg;
+    color: $filter-draft-color;
+    border-color: #d0d0d0;
+
+    &.is-active {
+      background-color: $filter-draft-active-bg;
+      color: $filter-draft-active-color;
+      border-color: $filter-draft-active-bg;
+    }
+  }
+}

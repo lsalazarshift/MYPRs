@@ -22,6 +22,7 @@
     "package:dev": "webpack --mode development && tfx extension create --manifest-globs vss-extension.dev.json --output-path ./vsix",
     "clean": "rm -rf dist vsix",
     "prebuild": "npm run clean",
+    "test": "jest",
     "ci": "npm run typecheck && npm run lint && npm run build && npm run package"
   },
   "dependencies": {
@@ -31,6 +32,7 @@
     "react-dom": "^16.14.0"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.14",
     "@types/react": "^16.14.0",
     "@types/react-dom": "^16.9.0",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
@@ -40,10 +42,12 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.0",
     "eslint-plugin-security": "^2.1.0",
+    "jest": "^29.7.0",
     "sass": "^1.77.0",
     "sass-loader": "^14.2.0",
     "style-loader": "^3.3.4",
     "tfx-cli": "^0.17.0",
+    "ts-jest": "^29.4.9",
     "ts-loader": "^9.5.1",
     "typescript": "^5.4.0",
     "webpack": "^5.91.0",
