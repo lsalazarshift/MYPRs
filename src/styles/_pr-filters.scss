@@ -1,0 +1,172 @@
+// ============================================================
+// PR Status Filters – _pr-filters.scss
+//
+// Chip/button styles for each ComputedStatus variant.
+// Variables declared here intentionally use the same naming
+// convention as main.scss so you can forward them to a shared
+// _variables.scss when consolidating.
+// ============================================================
+
+// --- Status colour tokens ---
+$status-active:            #0078d4; // Azure blue (matches $primary in main.scss)
+$status-active-light:      #deecf9;
+
+$status-draft:             #757575; // neutral grey
+$status-draft-light:       #f5f5f5;
+
+$status-waiting:           #ca5010; // amber / orange-red
+$status-waiting-light:     #fce4d6;
+
+$status-reviewed:          #107c10; // green
+$status-reviewed-light:    #dff6dd;
+
+$status-needs-review:      #005a9e; // deep blue
+$status-needs-review-light:#cce4f6;
+
+$status-ready:             #498205; // lime green
+$status-ready-light:       #e2efda;
+
+$status-blocked:           #d13438; // red (matches $danger in main.scss)
+$status-blocked-light:     #fde7e9;
+
+$status-closed:            #616161;
+$status-closed-light:      #eeeeee;
+
+// --- Base filter container ---
+.pr-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  padding: 8px 0;
+}
+
+// --- Base chip ---
+.pr-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: 16px;
+  border: 1px solid transparent;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  background-color: #f5f5f5;
+  color: #424242;
+
+  // Accessibility: visible focus ring
+  &:focus-visible {
+    outline: 2px solid $status-active;
+    outline-offset: 2px;
+  }
+
+  &:hover:not(:disabled) {
+    filter: brightness(0.94);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  // Active (selected) state for the generic chip
+  &.is-active {
+    box-shadow: 0 0 0 2px currentColor;
+  }
+}
+
+// --- Per-status variants ---
+// Each variant applies colours in normal and .is-active states.
+
+.pr-filter--active {
+  color: $status-active;
+  background-color: $status-active-light;
+  border-color: $status-active;
+
+  &.is-active {
+    background-color: $status-active;
+    color: #ffffff;
+  }
+}
+
+.pr-filter--draft {
+  color: $status-draft;
+  background-color: $status-draft-light;
+  border-color: $status-draft;
+
+  &.is-active {
+    background-color: $status-draft;
+    color: #ffffff;
+  }
+}
+
+.pr-filter--waiting_for_author {
+  color: $status-waiting;
+  background-color: $status-waiting-light;
+  border-color: $status-waiting;
+
+  &.is-active {
+    background-color: $status-waiting;
+    color: #ffffff;
+  }
+}
+
+.pr-filter--reviewed {
+  color: $status-reviewed;
+  background-color: $status-reviewed-light;
+  border-color: $status-reviewed;
+
+  &.is-active {
+    background-color: $status-reviewed;
+    color: #ffffff;
+  }
+}
+
+.pr-filter--needs_review {
+  color: $status-needs-review;
+  background-color: $status-needs-review-light;
+  border-color: $status-needs-review;
+
+  &.is-active {
+    background-color: $status-needs-review;
+    color: #ffffff;
+  }
+}
+
+.pr-filter--ready_to_merge {
+  color: $status-ready;
+  background-color: $status-ready-light;
+  border-color: $status-ready;
+
+  &.is-active {
+    background-color: $status-ready;
+    color: #ffffff;
+  }
+}
+
+.pr-filter--blocked {
+  color: $status-blocked;
+  background-color: $status-blocked-light;
+  border-color: $status-blocked;
+
+  &.is-active {
+    background-color: $status-blocked;
+    color: #ffffff;
+  }
+}
+
+.pr-filter--closed {
+  color: $status-closed;
+  background-color: $status-closed-light;
+  border-color: $status-closed;
+
+  &.is-active {
+    background-color: $status-closed;
+    color: #ffffff;
+  }
+}

@@ -16,6 +16,9 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "lint:fix": "eslint 'src/**/*.{ts,tsx}' --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "security:audit": "npm audit --production --audit-level=high",
     "security:sast": "bash scripts/sast-check.sh",
     "package": "tfx extension create --manifest-globs vss-extension.json --output-path ./vsix",
@@ -24,6 +27,22 @@
     "prebuild": "npm run clean",
     "ci": "npm run typecheck && npm run lint && npm run build && npm run package"
   },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "roots": ["<rootDir>/src"],
+    "testMatch": ["**/*.test.ts", "**/*.spec.ts"],
+    "transform": {
+      "^.+\\.tsx?$": ["ts-jest", {
+        "tsconfig": {
+          "module": "CommonJS",
+          "esModuleInterop": true
+        }
+      }]
+    },
+    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json"],
+    "collectCoverageFrom": ["src/utils/**/*.ts", "!src/**/*.test.ts", "!src/**/*.spec.ts"]
+  },
   "dependencies": {
     "azure-devops-extension-api": "^4.0.0",
     "azure-devops-extension-sdk": "^4.0.0",
@@ -31,6 +50,7 @@
     "react-dom": "^16.14.0"
   },
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/react": "^16.14.0",
     "@types/react-dom": "^16.9.0",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
@@ -40,10 +60,12 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.0",
     "eslint-plugin-security": "^2.1.0",
+    "jest": "^30.3.0",
     "sass": "^1.77.0",
     "sass-loader": "^14.2.0",
     "style-loader": "^3.3.4",
     "tfx-cli": "^0.17.0",
+    "ts-jest": "^29.4.9",
     "ts-loader": "^9.5.1",
     "typescript": "^5.4.0",
     "webpack": "^5.91.0",
